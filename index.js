@@ -138,3 +138,70 @@ topLeft.addEventListener('click', (event) => {
         }
     }
 })
+
+topRight.addEventListener('click', (event) => {
+    if (on) {
+        playerOrder.push(2);
+        check();
+        two();
+        if(!win){
+            setTimeout(() => {
+                clearColor();
+            }, 300);
+        }
+    }
+})
+
+bottomLeft.addEventListener('click', (event) => {
+    if (on) {
+        playerOrder.push(3);
+        check();
+        three();
+        if(!win){
+            setTimeout(() => {
+                clearColor();
+            }, 300);
+        }
+    }
+})
+
+bottomRight.addEventListener('click', (event) => {
+    if (on) {
+        playerOrder.push(4);
+        check();
+        four();
+        if(!win){
+            setTimeout(() => {
+                clearColor();
+            }, 300);
+        }
+    }
+})
+
+function check() {
+    if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1]) 
+        good =false;
+
+    if (playerOrder.length == 20 && good) {
+        winGame();
+    }
+
+    if (good == false) {
+        flashColor();
+        turnCounter.innerHTML = "NO!";
+        setTimeout(() => {
+            turnCounter.innerHTML = turn;
+            clearColor();
+            if (strict) {
+                play();
+            } else {
+                compTurn = true;
+                flash = 0;
+                playerOrder = [];
+                good = true;
+                intervalId = setInterval(gameTurn, 800);
+            }
+        }, 800);
+        noise = false;
+    }
+}
