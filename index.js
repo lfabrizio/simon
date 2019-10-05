@@ -119,8 +119,20 @@ function four() {
     bottomRight.getElementsByClassName.backgroundColor = "lightskyblue";
 }
 
+function flashColor(){
+    topLeft.style.backgroundColor = "lightgreen";
+    topRight.style.backgroundColor = "tomato";
+    bottomLeft.style.backgroundColor = "yellow";
+    bottomRight.style.backgroundColor = "lightskyblue";
+}
+
+
+
+
+
+
 function clearColor(){
-    topLeft.style.backgroundColor = "darkgreem";
+    topLeft.style.backgroundColor = "darkgreen";
     topRight.style.backgroundColor = "darkred";
     bottomLeft.style.backgroundColor = "goldenrod";
     bottomRight.style.backgroundColor = "darkblue";
@@ -204,4 +216,20 @@ function check() {
         }, 800);
         noise = false;
     }
+if(turn == playerOrder.length && good && !win) {
+    turn++;
+    playerOrder = [];
+    compTurn = true;
+    flash = 0;
+    turnCounter.innerHTML = turn;
+    intervalId = setInterval(gameTurn, 800);
+}
+
+}
+
+function winGame() {
+    flashColor();
+    turnCounterinnerHTML = "WIN!";
+    on = false;
+    win = true;
 }
