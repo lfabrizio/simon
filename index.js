@@ -72,7 +72,7 @@ function gameTurn() {
     }
 
     if (compTurn) {
-        clearCorol();
+        clearColor();
         setTimeout(() => {
             if(order[flash] == 1) one();
             if(order[flash] == 2) two();
@@ -91,3 +91,50 @@ function one() {
     noise = true;
     topLeft.getElementsByClassName.backgroundColor = "lightgreen";
 }
+
+function two() {
+    if(noise) {
+        let audio = document.getElementById("clip2");
+        audio.play();
+    }
+    noise = true;
+    topRight.getElementsByClassName.backgroundColor = "tomato";
+}
+
+function three() {
+    if(noise) {
+        let audio = document.getElementById("clip3");
+        audio.play();
+    }
+    noise = true;
+    bottomLeft.getElementsByClassName.backgroundColor = "yellow";
+}
+
+function four() {
+    if(noise) {
+        let audio = document.getElementById("clip4");
+        audio.play();
+    }
+    noise = true;
+    bottomRight.getElementsByClassName.backgroundColor = "lightskyblue";
+}
+
+function clearColor(){
+    topLeft.style.backgroundColor = "darkgreem";
+    topRight.style.backgroundColor = "darkred";
+    bottomLeft.style.backgroundColor = "goldenrod";
+    bottomRight.style.backgroundColor = "darkblue";
+}
+
+topLeft.addEventListener('click', (event) => {
+    if (on) {
+        playerOrder.push(1);
+        check();
+        one();
+        if(!win){
+            setTimeout(() => {
+                clearColor();
+            }, 300);
+        }
+    }
+})
